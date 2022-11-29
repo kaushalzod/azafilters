@@ -8,9 +8,13 @@ class RefineCheckboxWidget extends StatelessWidget {
   final void Function(dynamic value) onChanged;
   final String? label;
   final TextStyle? textStyle;
+  final bool isColor;
+  final String? colorCode;
   const RefineCheckboxWidget(
       {super.key,
       required this.onChanged,
+      this.isColor = false,
+      this.colorCode,
       this.textStyle,
       required this.value,
       required this.label});
@@ -20,17 +24,22 @@ class RefineCheckboxWidget extends StatelessWidget {
     return InkWell(
       onTap: () => onChanged(value),
       child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: value ? azaMain : Colors.transparent),
+            borderRadius: BorderRadius.circular(4)),
         padding: const EdgeInsets.only(left: 12),
         height: 40,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            customCheckbox(isSelected: value, onCheck: onChanged),
+            if (!isColor) customCheckbox(isSelected: value, onCheck: onChanged),
+            if (isColor) colorBox(colorCode ?? "FFFFFF"),
             const SizedBox(width: 8),
             label != null
                 ? Text(
                     label ?? '',
                     style: textStyle ?? text400.copyWith(color: greyScale50),
+                    maxLines: 1,
                   )
                 : const SizedBox.shrink(),
           ],
@@ -38,6 +47,23 @@ class RefineCheckboxWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget colorBox(String? colorCode) {
+  return Container(
+    height: 14,
+    width: 14,
+    decoration: BoxDecoration(
+      color: colorCode != null
+          ? Color(int.parse("0xFF" + colorCode))
+          : Colors.transparent,
+      borderRadius: BorderRadius.circular(2),
+      border: Border.all(
+        width: 1,
+        color: greyScale90,
+      ),
+    ),
+  );
 }
 
 Widget customCheckbox(

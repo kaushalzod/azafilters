@@ -41,7 +41,7 @@ class RefineFilterTileWidget extends StatelessWidget {
                 dataModel.isNotEmpty
                     ? const SizedBox(width: 16)
                     : const SizedBox.shrink(),
-                dataModel.isNotEmpty
+                dataModel.isNotEmpty || label == "Price"
                     ? const Icon(CupertinoIcons.chevron_right, size: 12)
                     : const SizedBox.shrink()
               ],

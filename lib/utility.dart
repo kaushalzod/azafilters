@@ -4,6 +4,7 @@ import 'package:azafilters/constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logger/logger.dart';
 
 TextStyle text300 = GoogleFonts.roboto(
     fontSize: 12, fontWeight: FontWeight.w300, color: greyScale30);
@@ -22,7 +23,14 @@ TextStyle text700 = GoogleFonts.roboto(
 routePushTo(BuildContext context,
     {required Widget route, bool isSlide = false}) async {
   final popData = await Navigator.of(context).push(isSlide || Platform.isIOS
-      ? CupertinoPageRoute(builder: (context) => route)
+      ? CupertinoPageRoute(
+          builder: (context) => route,
+          fullscreenDialog: true,
+        )
       : MaterialPageRoute(builder: (context) => route));
   return popData;
 }
+
+var logger = Logger(
+  printer: PrettyPrinter(),
+);
