@@ -1,14 +1,9 @@
-// import 'package:azafashions/models/Login/IntroModelList.dart';
-// import 'package:azafashions/services/formatter.dart';
-// import 'package:azafashions/utils/HeaderFile.dart';
-// import 'package:azafashions/utils/constants/constant.dart';
-// import 'package:azafashions/utils/utility.dart';
-
 // filterPriceMapFunctio({required int? min, required int? max}) {
-//   if (min == null || max == null)
+//   if (min == null || max == null) {
 //     return {};
-//   else
+//   } else {
 //     return {"min": min, "max": max};
+//   }
 // }
 
 // Map<String, dynamic> getAlogliaPLPBody(
@@ -87,11 +82,41 @@
 //   _getCategoryFacets(dynamic facetJson, Map selection) {
 //     var mainCategoryToken = facetJson["main_category_token"];
 //     var subCategoryToken = facetJson["sub_category_token"];
+//     var subSubCategoryToken = facetJson["category_token"];
 //     List itemList = [];
 //     Map<String, List> tempItemList = {};
+//     Map<String, List> tempSubList = {};
 
+//     subSubCategoryToken?.forEach((key, value) {
+//       var arrSubSubCat = key.split('|');
 
-    
+//       subCategoryToken.forEach((mkey, mvalue) {
+//         var arrSubCat = mkey.split('|');
+//         if (arrSubCat[0] == arrSubSubCat[2]) {
+//           tempSubList.update(arrSubCat[1], (newValue) {
+//             newValue.add({
+//               "name": arrSubSubCat[1],
+//               "value": arrSubSubCat[0].toString().parseInt(),
+//               "count": value,
+//               "selected": selection["category_token"]
+//                   .contains("subSubCategoryTitle:${arrSubSubCat[1]}")
+//             });
+//             return newValue;
+//           }, ifAbsent: () {
+//             var newarr = [];
+//             newarr.add({
+//               "name": arrSubCat[1],
+//               "value": arrSubCat[0].toString().parseInt(),
+//               "count": value,
+//               "selected": selection["category_token"]
+//                   .contains("subSubCategoryTitle:${arrSubSubCat[1]}")
+//             });
+//             return newarr;
+//           });
+//         }
+//       });
+//     });
+
 //     // print(subCategoryToken);
 //     // print(mainCategoryToken);
 //     subCategoryToken?.forEach((key, value) {
@@ -109,6 +134,7 @@
 //               "name": arrSubCat[1],
 //               "value": arrSubCat[0].toString().parseInt(),
 //               "field": "sub_category_id",
+//               "selectedCount": 0,
 //               "count": value,
 //               "selected": selection["sub_category_token"]
 //                   .contains("subCategoryTitle:${arrSubCat[1]}")
@@ -120,6 +146,7 @@
 //               "name": arrSubCat[1],
 //               "value": arrSubCat[0].toString().parseInt(),
 //               "field": "sub_category_id",
+//               "selectedCount": 0,
 //               "count": value,
 //               "selected": selection["sub_category_token"]
 //                   .contains("subCategoryTitle:${arrSubCat[1]}")
@@ -138,6 +165,7 @@
 //       "name": "Categories",
 //       "field": "category_id",
 //       "selection": "multiple",
+//       "selectedCount": 0,
 //       "nested": true,
 //       "list": itemList,
 //     };

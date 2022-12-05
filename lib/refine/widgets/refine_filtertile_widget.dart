@@ -7,13 +7,14 @@ import 'package:flutter/material.dart';
 class RefineFilterTileWidget extends StatelessWidget {
   final String label;
   final void Function()? onTap;
-  final bool checked;
+  final int selectedCount;
+
   final List<FilterModel> dataModel;
 
   const RefineFilterTileWidget(
       {super.key,
       required this.label,
-      this.checked = false,
+      required this.selectedCount,
       this.onTap,
       required this.dataModel});
 
@@ -32,18 +33,14 @@ class RefineFilterTileWidget extends StatelessWidget {
             ),
             Row(
               children: [
-                checked
-                    ? const CircleAvatar(
-                        radius: 3.5,
-                        backgroundColor: greyScale60,
-                      )
-                    : const SizedBox.shrink(),
-                dataModel.isNotEmpty
-                    ? const SizedBox(width: 16)
-                    : const SizedBox.shrink(),
-                dataModel.isNotEmpty || label == "Price"
-                    ? const Icon(CupertinoIcons.chevron_right, size: 12)
-                    : const SizedBox.shrink()
+                if (selectedCount != 0)
+                  const CircleAvatar(
+                    radius: 3.5,
+                    backgroundColor: greyScale60,
+                  ),
+                if (dataModel.isNotEmpty) const SizedBox(width: 16),
+                if (dataModel.isNotEmpty || label == "Price")
+                  const Icon(CupertinoIcons.chevron_right, size: 12)
               ],
             )
           ],

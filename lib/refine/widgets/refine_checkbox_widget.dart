@@ -25,8 +25,11 @@ class RefineCheckboxWidget extends StatelessWidget {
       onTap: () => onChanged(value),
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: value ? azaMain : Colors.transparent),
-            borderRadius: BorderRadius.circular(4)),
+          color: isColor && value ? azaVeryLightBG : Colors.transparent,
+          border: Border.all(
+              color: isColor && value ? azaMain : Colors.transparent),
+          borderRadius: BorderRadius.circular(4),
+        ),
         padding: const EdgeInsets.only(left: 12),
         height: 40,
         child: Row(
@@ -36,10 +39,16 @@ class RefineCheckboxWidget extends StatelessWidget {
             if (isColor) colorBox(colorCode ?? "FFFFFF"),
             const SizedBox(width: 8),
             label != null
-                ? Text(
-                    label ?? '',
-                    style: textStyle ?? text400.copyWith(color: greyScale50),
-                    maxLines: 1,
+                ? Expanded(
+                    child: Text(
+                      label ?? '',
+                      style: textStyle ??
+                          text400.copyWith(
+                              color: greyScale50,
+                              overflow: TextOverflow.ellipsis),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   )
                 : const SizedBox.shrink(),
           ],
@@ -48,6 +57,8 @@ class RefineCheckboxWidget extends StatelessWidget {
     );
   }
 }
+// 1652 selection count display logic as its deep down filtration
+// 1662 discuss with raj and vishal
 
 Widget colorBox(String? colorCode) {
   return Container(
@@ -55,7 +66,7 @@ Widget colorBox(String? colorCode) {
     width: 14,
     decoration: BoxDecoration(
       color: colorCode != null
-          ? Color(int.parse("0xFF" + colorCode))
+          ? Color(int.parse("0xFF${colorCode.replaceAll('#', '')}"))
           : Colors.transparent,
       borderRadius: BorderRadius.circular(2),
       border: Border.all(

@@ -16,6 +16,7 @@ AppBar appbarWidget({required String title, bool icon = true}) {
       Padding(
         padding: const EdgeInsets.only(right: 16),
         child: InkWell(
+          splashFactory: NoSplash.splashFactory,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: icon

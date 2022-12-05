@@ -1,8 +1,5 @@
 import 'package:azafilters/constant.dart';
 import 'package:azafilters/provider/refine_provider.dart';
-import 'package:azafilters/refine/child_pages/price_range.dart';
-import 'package:azafilters/refine/child_pages/refine_subfilters_page.dart';
-import 'package:azafilters/refine/models/helper_model.dart';
 import 'package:azafilters/refine/widgets/refine_filtertile_widget.dart';
 import 'package:azafilters/refine/widgets/refine_header_widget.dart';
 import 'package:azafilters/refine/widgets/refine_radio_widget.dart';
@@ -45,6 +42,7 @@ class RefinePage extends StatelessWidget {
       ),
       body: Consumer<RefineProvider>(
         builder: (context, value, child) => ListView(
+          physics: const ClampingScrollPhysics(),
           children: [
             const RefineHeaderWidget(header: "Sort by"),
             for (var item in value.sortBy)
@@ -62,29 +60,17 @@ class RefinePage extends StatelessWidget {
             for (int index = 0; index < value.filterData.length; index++)
               RefineFilterTileWidget(
                 label: value.filterData[index].name ?? '',
-                checked: value.filterData[index].selected!,
+                selectedCount: value.filterData[index].selectedCount ?? 0,
                 dataModel: value.filterData[index].list ?? [],
                 onTap: () {
                   value.setMainCatSelected = 0;
                   value.setSubCatSelected = 0;
                   value.setClickIndex = index;
-                  (value.filterData[index].list ?? []).isNotEmpty
-                      ? routePushTo(context,
-                          isSlide: true,
-                          route: RefineSubFiltersPage(
-                            // dataModel: value.filterData[index].subCat,
-                            title: value.filterData[index].name ?? '',
-                            // clickIndex: value.clickIndex,
-                            // level: value.filterData[index].level,
-                          ))
-                      : value.filterData[index].name == "Price"
-                          ? routePushTo(context,
-                              isSlide: true,
-                              route: RefinePriceRange(
-                                // dataModel: value.filterData[index].subCat,
-                                title: value.filterData[index].name ?? '',
-                              ))
-                          : null;
+                  routePushTo(context,
+                      isSlide: true,
+                      route: value.routeNavigator(
+                        value.filterData[index].name ?? '',
+                      ));
                 },
               )
           ],

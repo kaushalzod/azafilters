@@ -27,7 +27,10 @@ class RefineSubFiltersPage extends StatelessWidget {
         children: [
           Container(
             decoration: const BoxDecoration(
-                border: Border(bottom: BorderSide(color: greyScale90))),
+              border: Border(
+                bottom: BorderSide(color: greyScale90),
+              ),
+            ),
             padding: const EdgeInsets.symmetric(horizontal: 16)
                 .add(const EdgeInsets.only(top: 8, bottom: 16)),
             child: refineSearchBar(hint: "Search $title"),
@@ -38,18 +41,18 @@ class RefineSubFiltersPage extends StatelessWidget {
                   builder: (context, value, child) => SizedBox(
                     height: 40,
                     child: ListView.builder(
+                      physics: const ClampingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
-                      itemCount:
-                          value.filterData[value.clickIndex].list?.length,
+                      itemCount: value.getMainCatItemCount(),
                       itemBuilder: (context, index) => RefineTabtileWidget(
+                        selectedCount: value.filterData[value.clickIndex]
+                                .list?[index].selectedCount ??
+                            0,
                         onTap: () {
                           value.setMainCatSelected = index;
                         },
                         isActive: index == value.mainCatSelected,
-                        name: (value.filterData[value.clickIndex].list ??
-                                    [])[index]
-                                .name ??
-                            '',
+                        name: value.getMainCatName(index: index),
                       ),
                     ),
                   ),
@@ -67,26 +70,23 @@ class RefineSubFiltersPage extends StatelessWidget {
                           child: ListView.builder(
                             itemBuilder: (context, index) {
                               return RefineSubCatTileWidget(
+                                  selectionCount:
+                                      ViewType.twoLevel == getViewType(title)
+                                          ? value.getMainCatSelectionCount(
+                                              index: index)
+                                          : value.getSubCatSelectedCount(
+                                              index: index),
                                   onTap: (v) {
                                     value.setSubCatSelected = index;
                                   },
                                   title: ViewType.twoLevel == getViewType(title)
-                                      ? (value.filterData[value.clickIndex]
-                                              .list?[index].name ??
-                                          '')
-                                      : (value
-                                              .filterData[value.clickIndex]
-                                              .list?[value.mainCatSelected]
-                                              .list?[index]
-                                              .name) ??
-                                          '',
+                                      ? value.getMainCatName(index: index)
+                                      : value.getSubCatName(index: index),
                                   isActive: value.subCatSelected == index);
                             },
                             itemCount: ViewType.twoLevel == getViewType(title)
-                                ? value
-                                    .filterData[value.clickIndex].list?.length
-                                : value.filterData[value.clickIndex]
-                                    .list?[value.mainCatSelected].list?.length,
+                                ? value.getMainCatItemCount()
+                                : value.getSubCatItemCount(),
                           ),
                         )
                       : const SizedBox.shrink(),
@@ -116,8 +116,8 @@ class RefineSubFiltersPage extends StatelessWidget {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 16),
                                         child: Text(
-                                          value.filterData[value.clickIndex]
-                                                  .list?[index].name?[0] ??
+                                          value.getMainCatName(
+                                                  index: index)[0] ??
                                               '',
                                           style: text500.copyWith(
                                               fontSize: 16, color: greyScale60),
@@ -131,11 +131,13 @@ class RefineSubFiltersPage extends StatelessWidget {
                                           ? 4
                                           : 0),
                                   child: RefineCheckboxWidget(
-                                      onChanged: (value) {},
-                                      value: false,
-                                      label: value.filterData[value.clickIndex]
-                                              .list?[index].name ??
-                                          ''),
+                                      onChanged: (values) {
+                                        value.setMainCatSelection(index: index);
+                                      },
+                                      value: value.getMainCatSelection(
+                                          index: index),
+                                      label:
+                                          value.getMainCatName(index: index)),
                                 ),
                               ],
                             );
@@ -144,11 +146,12 @@ class RefineSubFiltersPage extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 4),
                               child: RefineCheckboxWidget(
-                                  onChanged: (value) {},
-                                  value: false,
-                                  label: value.filterData[value.clickIndex]
-                                          .list?[index].name ??
-                                      ''),
+                                  onChanged: (values) {
+                                    value.setMainCatSelection(index: index);
+                                  },
+                                  value:
+                                      value.getMainCatSelection(index: index),
+                                  label: value.getMainCatName(index: index)),
                             );
                           }
                         } else {
@@ -160,89 +163,40 @@ class RefineSubFiltersPage extends StatelessWidget {
                             child: RefineCheckboxWidget(
                                 onChanged: (values) {
                                   getViewType(title) == ViewType.threeLevel
-                                      ? (value
-                                          .filterData[value.clickIndex]
-                                          .list?[value.mainCatSelected]
-                                          .list?[value.subCatSelected]
-                                          .list?[index]
-                                          .selected = !(value
-                                              .filterData[value.clickIndex]
-                                              .list?[value.mainCatSelected]
-                                              .list?[value.subCatSelected]
-                                              .list?[index]
-                                              .selected ??
-                                          false))
+                                      ? value.setSubSubCatSelection(
+                                          index: index)
                                       : getViewType(title) == ViewType.twoLevel
-                                          ? (value
-                                              .filterData[value.clickIndex]
-                                              .list?[value.subCatSelected]
-                                              .list?[index]
-                                              .selected = !(value
-                                                  .filterData[value.clickIndex]
-                                                  .list?[value.subCatSelected]
-                                                  .list?[index]
-                                                  .selected ??
-                                              false))
-                                          : (value.filterData[value.clickIndex].list?[index].selected = !(value
-                                                  .filterData[value.clickIndex]
-                                                  .list?[index]
-                                                  .selected ??
-                                              false));
+                                          ? value.setSizeCheckboxValue(
+                                              index: index)
+                                          : value.setOneLevelCheckboxSelection(
+                                              index: index);
                                 },
-                                value: false,
+                                value: getViewType(title) == ViewType.threeLevel
+                                    ? value.getSubSubCatSelection(index: index)
+                                    : getViewType(title) == ViewType.twoLevel
+                                        ? value.getSizeCheckboxValue(
+                                            index: index)
+                                        : value.getOneLevelCheckboxSelection(
+                                            index: index),
                                 isColor: title == "Color",
-                                colorCode: getViewType(title) ==
-                                        ViewType.threeLevel
-                                    ? (value
-                                        .filterData[value.clickIndex]
-                                        .list?[value.mainCatSelected]
-                                        .list?[value.subCatSelected]
-                                        .list?[index]
-                                        .colorCode)
-                                    : getViewType(title) == ViewType.twoLevel
-                                        ? (value
-                                            .filterData[value.clickIndex]
-                                            .list?[value.subCatSelected]
-                                            .list?[index]
-                                            .colorCode)
-                                        : (value.filterData[value.clickIndex]
-                                            .list?[index].colorCode),
+                                colorCode: title == "Color"
+                                    ? value.getColorCode(index: index)
+                                    : "ffffff",
                                 label: getViewType(title) == ViewType.threeLevel
-                                    ? (value
-                                        .filterData[value.clickIndex]
-                                        .list?[value.mainCatSelected]
-                                        .list?[value.subCatSelected]
-                                        .list?[index]
-                                        .name)
+                                    ? value.getSubSubCatName(index: index)
                                     : getViewType(title) == ViewType.twoLevel
-                                        ? (value
-                                            .filterData[value.clickIndex]
-                                            .list?[value.subCatSelected]
-                                            .list?[index]
-                                            .name)
-                                        : (value.filterData[value.clickIndex]
-                                            .list?[index].name)),
+                                        ? value.getSizeCheckboxName(
+                                            index: index)
+                                        : value.getOnLevelCheckboxName(
+                                            index: index)),
                           );
                         }
                       },
                       itemCount: getViewType(title) == ViewType.threeLevel
-                          ? (value
-                                  .filterData[value.clickIndex]
-                                  .list?[value.mainCatSelected]
-                                  .list?[value.subCatSelected]
-                                  .list
-                                  ?.length ??
-                              0)
+                          ? value.getSubSubCatItemCount()
                           : getViewType(title) == ViewType.twoLevel
-                              ? (value
-                                      .filterData[value.clickIndex]
-                                      .list?[value.subCatSelected]
-                                      .list
-                                      ?.length ??
-                                  0)
-                              : value.filterData[value.clickIndex].list
-                                      ?.length ??
-                                  0,
+                              ? value.getSizeCheckboxItemCount()
+                              : value.getOneLevelCheckboxItemCount(),
                     ),
                   )
                 ],

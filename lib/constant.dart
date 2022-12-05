@@ -6,6 +6,7 @@ const Color azaMainLight = Color(0xFFE96844);
 
 const Color azaSelectedBG = Color(0xFFFFDCCD);
 const Color azaLightBG = Color(0xFFFFF8F5);
+const Color azaVeryLightBG = Color(0xFFFFFCFB);
 
 const Color greyScale100 = Color(0xFFFFFFFF);
 const Color greyScale98 = Color(0xFFFAFAFA);

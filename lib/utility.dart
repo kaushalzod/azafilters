@@ -31,6 +31,8 @@ routePushTo(BuildContext context,
   return popData;
 }
 
-var logger = Logger(
-  printer: PrettyPrinter(),
-);
+var logger = Logger();
+
+warninglog(var log) {
+  logger.w(log);
+}

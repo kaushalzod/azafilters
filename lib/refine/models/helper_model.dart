@@ -200,9 +200,12 @@ Map filterJsonData = {
       "field": "category_id",
       "selection": "multiple",
       "nested": true,
+      "selectedCount": 0,
       "list": [
         {
           "name": "Women",
+          "value": 3,
+          "selectedCount": 0,
           "list": [
             {
               "name": "Kurta Sets",
@@ -210,6 +213,7 @@ Map filterJsonData = {
               "count": 2552,
               "selected": false,
               "field": "sub_category_id",
+              "selectedCount": 0,
               "list": [
                 {
                   "name": "Palazzo Sets",
@@ -272,6 +276,7 @@ Map filterJsonData = {
               "value": 48,
               "count": 525,
               "selected": false,
+              "selectedCount": 0,
               "field": "sub_category_id",
               "list": [
                 {
@@ -319,6 +324,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Sleeves",
               "value": 312,
               "count": 16,
@@ -326,6 +332,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Sports & Activewear",
               "value": 315,
               "count": 6,
@@ -333,6 +340,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Tops",
               "value": 50,
               "count": 538,
@@ -366,6 +374,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Tunics & Kurtis",
               "value": 55,
               "count": 384,
@@ -389,6 +398,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Sarees",
               "value": 46,
               "count": 767,
@@ -464,6 +474,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Dresses",
               "value": 51,
               "count": 1169,
@@ -476,6 +487,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Gowns",
               "value": 47,
               "count": 89,
@@ -483,6 +495,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Dupattas",
               "value": 225,
               "count": 90,
@@ -490,6 +503,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Jumpsuits",
               "value": 52,
               "count": 164,
@@ -497,6 +511,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Skirt Sets",
               "value": 73,
               "count": 58,
@@ -504,6 +519,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Pant Sets",
               "value": 77,
               "count": 196,
@@ -511,6 +527,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Skirts",
               "value": 53,
               "count": 70,
@@ -523,6 +540,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Jackets",
               "value": 54,
               "count": 137,
@@ -530,6 +548,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Kaftans",
               "value": 56,
               "count": 96,
@@ -537,6 +556,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Pants",
               "value": 58,
               "count": 215,
@@ -564,6 +584,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Capes",
               "value": 61,
               "count": 45,
@@ -571,6 +592,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Saree Blouses",
               "value": 124,
               "count": 26,
@@ -578,6 +600,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Swimwear",
               "value": 152,
               "count": 9,
@@ -602,9 +625,12 @@ Map filterJsonData = {
           ]
         },
         {
+          "selectedCount": 0,
           "name": "Men",
+          "value": 4,
           "list": [
             {
+              "selectedCount": 0,
               "name": "Pant Sets",
               "value": 224,
               "count": 22,
@@ -612,6 +638,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Kurta Sets",
               "value": 35,
               "count": 1260,
@@ -645,6 +672,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Kurtas",
               "value": 34,
               "count": 215,
@@ -666,6 +694,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Sherwanis",
               "value": 33,
               "count": 244,
@@ -673,6 +702,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Bandhgalas",
               "value": 36,
               "count": 68,
@@ -680,6 +710,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Nehru Jacket & Sets",
               "value": 32,
               "count": 564,
@@ -687,6 +718,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Shirts",
               "value": 37,
               "count": 494,
@@ -708,6 +740,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Bottoms",
               "value": 29,
               "count": 156,
@@ -729,6 +762,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Jackets",
               "value": 30,
               "count": 30,
@@ -736,6 +770,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Suits & Tuxedos",
               "value": 31,
               "count": 33,
@@ -743,6 +778,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Blazers",
               "value": 28,
               "count": 20,
@@ -764,6 +800,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "T-shirts",
               "value": 178,
               "count": 47,
@@ -771,6 +808,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Shorts",
               "value": 162,
               "count": 8,
@@ -778,6 +816,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Accessories",
               "value": 167,
               "count": 798,
@@ -838,6 +877,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Footwear",
               "value": 161,
               "count": 133,
@@ -847,9 +887,12 @@ Map filterJsonData = {
           ]
         },
         {
+          "value": 5,
+          "selectedCount": 0,
           "name": "Jewellery",
           "list": [
             {
+              "selectedCount": 0,
               "name": "Bangles",
               "value": 17,
               "count": 183,
@@ -857,6 +900,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Bracelets",
               "value": 18,
               "count": 382,
@@ -864,6 +908,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Brooch",
               "value": 181,
               "count": 14,
@@ -871,6 +916,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Jewellery Sets",
               "value": 20,
               "count": 1056,
@@ -878,6 +924,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Kamarbandh",
               "value": 117,
               "count": 1,
@@ -885,6 +932,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Maangtikkas",
               "value": 24,
               "count": 188,
@@ -892,6 +940,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Mathapattis",
               "value": 110,
               "count": 45,
@@ -899,6 +948,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Nose rings",
               "value": 156,
               "count": 63,
@@ -906,6 +956,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Others",
               "value": 278,
               "count": 37,
@@ -913,6 +964,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Passas",
               "value": 23,
               "count": 30,
@@ -920,6 +972,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Payals",
               "value": 111,
               "count": 10,
@@ -927,6 +980,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Rings",
               "value": 19,
               "count": 444,
@@ -934,6 +988,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Earrings",
               "value": 14,
               "count": 2109,
@@ -1003,6 +1058,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Necklaces",
               "value": 21,
               "count": 1061,
@@ -1038,9 +1094,12 @@ Map filterJsonData = {
           ]
         },
         {
+          "value": 6,
+          "selectedCount": 0,
           "name": "Accessories",
           "list": [
             {
+              "selectedCount": 0,
               "name": "Fragrances",
               "value": 321,
               "count": 26,
@@ -1048,6 +1107,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Mask Chains",
               "value": 316,
               "count": 6,
@@ -1055,6 +1115,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Others",
               "value": 314,
               "count": 5,
@@ -1062,6 +1123,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Shawls",
               "value": 226,
               "count": 70,
@@ -1069,6 +1131,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Stoles & Scarves",
               "value": 227,
               "count": 252,
@@ -1076,6 +1139,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Handbags",
               "value": 114,
               "count": 1454,
@@ -1104,6 +1168,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Footwear",
               "value": 6,
               "count": 1874,
@@ -1138,6 +1203,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Hairbands",
               "value": 11,
               "count": 282,
@@ -1145,6 +1211,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Gift Boxes",
               "value": 12,
               "count": 10,
@@ -1152,6 +1219,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Belts",
               "value": 108,
               "count": 96,
@@ -1159,6 +1227,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Masks",
               "value": 280,
               "count": 34,
@@ -1168,9 +1237,12 @@ Map filterJsonData = {
           ]
         },
         {
+          "selectedCount": 0,
           "name": "Kids",
+          "value": 7,
           "list": [
             {
+              "selectedCount": 0,
               "name": "Accessories",
               "value": 319,
               "count": 20,
@@ -1178,6 +1250,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Bath",
               "value": 290,
               "count": 6,
@@ -1185,6 +1258,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Girls",
               "value": 129,
               "count": 1227,
@@ -1275,6 +1349,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Boys",
               "value": 130,
               "count": 671,
@@ -1336,9 +1411,12 @@ Map filterJsonData = {
           ]
         },
         {
+          "value": 8,
+          "selectedCount": 0,
           "name": "Homeware",
           "list": [
             {
+              "selectedCount": 0,
               "name": "Accent Furniture",
               "value": 323,
               "count": 12,
@@ -1346,6 +1424,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Rugs & Carpets",
               "value": 204,
               "count": 106,
@@ -1353,6 +1432,7 @@ Map filterJsonData = {
               "field": "sub_category_id"
             },
             {
+              "selectedCount": 0,
               "name": "Bed & Bath",
               "value": 203,
               "count": 68,
@@ -1369,6 +1449,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Decor",
               "value": 333,
               "count": 554,
@@ -1414,6 +1495,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Kitchen & Dining",
               "value": 201,
               "count": 852,
@@ -1459,6 +1541,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Lightings",
               "value": 202,
               "count": 41,
@@ -1486,13 +1569,23 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Housekeeping & Organisers",
               "value": 223,
               "count": 20,
               "selected": false,
-              "field": "sub_category_id"
+              "field": "sub_category_id",
+              "list": [
+                {
+                  "name": "Koi to bhi Covers terko kya Apne kaam se kam rakh",
+                  "value": 332,
+                  "count": 244,
+                  "selected": false
+                }
+              ]
             },
             {
+              "selectedCount": 0,
               "name": "Home Furnishings",
               "value": 325,
               "count": 244,
@@ -1508,6 +1601,7 @@ Map filterJsonData = {
               ]
             },
             {
+              "selectedCount": 0,
               "name": "Kids",
               "value": 341,
               "count": 16,
@@ -1531,6 +1625,7 @@ Map filterJsonData = {
       "field": "designer_id",
       "selection": "multiple",
       "nested": false,
+      "selectedCount": 0,
       "list": [
         {
           "name": "3DM Lifestyle",
@@ -3966,13 +4061,16 @@ Map filterJsonData = {
       "max": "1374900.00"
     },
     {
+      "selectedCount": 0,
       "name": "Size",
       "field": "size_id",
       "selection": "multiple",
       "nested": true,
       "list": [
         {
+          "selectedCount": 0,
           "name": "Clothing",
+          "value": 001,
           "list": [
             {"name": "XXS", "value": 41, "count": 136, "selected": false},
             {"name": "XS", "value": 1, "count": 6589, "selected": false},
@@ -3989,7 +4087,9 @@ Map filterJsonData = {
           ]
         },
         {
+          "selectedCount": 0,
           "name": "Footwear",
+          "value": 002,
           "list": [
             {"name": "UK 4", "value": 54, "count": 1, "selected": false},
             {"name": "UK 5", "value": 55, "count": 32, "selected": false},
@@ -4019,7 +4119,9 @@ Map filterJsonData = {
           ]
         },
         {
+          "selectedCount": 0,
           "name": "Kids",
+          "value": 003,
           "list": [
             {"name": "0-3 M", "value": 67, "count": 510, "selected": false},
             {"name": "3-6 M", "value": 68, "count": 515, "selected": false},
@@ -4042,7 +4144,9 @@ Map filterJsonData = {
           ]
         },
         {
+          "selectedCount": 0,
           "name": "Accessories",
+          "value": 004,
           "list": [
             {"name": "UK 10", "value": 12, "count": 40, "selected": false},
             {"name": "UK 11", "value": 13, "count": 40, "selected": false},
@@ -4082,13 +4186,17 @@ Map filterJsonData = {
           ]
         },
         {
+          "selectedCount": 0,
           "name": "Jewellery",
+          "value": 005,
           "list": [
             {"name": "FREE SIZE", "value": 95, "count": 5464, "selected": false}
           ]
         },
         {
+          "selectedCount": 0,
           "name": "Homeware",
+          "value": 006,
           "list": [
             {"name": "3X5", "value": 72, "count": 1, "selected": false},
             {"name": "4X6", "value": 74, "count": 11, "selected": false},
@@ -4113,130 +4221,131 @@ Map filterJsonData = {
       "field": "color_id",
       "selection": "multiple",
       "nested": false,
+      "selectedCount": 0,
       "list": [
         {
           "name": "Beige",
           "value": 1,
-          "code": "#d4ba97",
+          "colorCode": "#d4ba97",
           "count": 1175,
           "selected": false
         },
         {
           "name": "Black",
           "value": 2,
-          "code": "#000000",
+          "colorCode": "#000000",
           "count": 1971,
           "selected": false
         },
         {
           "name": "Blue",
           "value": 3,
-          "code": "#0063b1",
+          "colorCode": "#0063b1",
           "count": 3218,
           "selected": false
         },
         {
           "name": "Brown",
           "value": 21,
-          "code": "#78422c",
+          "colorCode": "#78422c",
           "count": 916,
           "selected": false
         },
         {
           "name": "FUCHSIA",
           "value": 7,
-          "code": "#fa008a",
+          "colorCode": "#fa008a",
           "count": 8,
           "selected": false
         },
         {
           "name": "Gold",
           "value": 8,
-          "code": "#d4af37",
+          "colorCode": "#d4af37",
           "count": 5290,
           "selected": false
         },
         {
           "name": "Green",
           "value": 19,
-          "code": "#8BC34A",
+          "colorCode": "#8BC34A",
           "count": 2293,
           "selected": false
         },
         {
           "name": "Grey",
           "value": 12,
-          "code": "#5e5f61",
+          "colorCode": "#5e5f61",
           "count": 999,
           "selected": false
         },
         {
           "name": "Maroon",
           "value": 24,
-          "code": "#B71C1C",
+          "colorCode": "#B71C1C",
           "count": 614,
           "selected": false
         },
         {
           "name": "Multi Color",
           "value": 28,
-          "code": "12345D",
+          "colorCode": "12345D",
           "count": 1396,
           "selected": false
         },
         {
           "name": "Orange",
           "value": 20,
-          "code": "#fd8c02",
+          "colorCode": "#fd8c02",
           "count": 470,
           "selected": false
         },
         {
           "name": "Peach",
           "value": 29,
-          "code": "#ff7666",
+          "colorCode": "#ff7666",
           "count": 663,
           "selected": false
         },
         {
           "name": "Pink",
           "value": 27,
-          "code": "#F06292",
+          "colorCode": "#F06292",
           "count": 2367,
           "selected": false
         },
         {
           "name": "Purple",
           "value": 17,
-          "code": "#a57dbb",
+          "colorCode": "#a57dbb",
           "count": 737,
           "selected": false
         },
         {
           "name": "Red",
           "value": 14,
-          "code": "#f60109",
+          "colorCode": "#f60109",
           "count": 1312,
           "selected": false
         },
         {
           "name": "Silver",
           "value": 13,
-          "code": "#C0C0C0",
+          "colorCode": "#C0C0C0",
           "count": 1215,
           "selected": false
         },
         {
           "name": "White",
           "value": 9,
-          "code": "#FFFFFF",
+          "colorCode": "#FFFFFF",
           "count": 3274,
           "selected": false
         },
         {
           "name": "Yellow",
           "value": 11,
-          "code": "#ffff00",
+          "colorCode": "#ffff00",
           "count": 1404,
           "selected": false
         }
@@ -4247,142 +4356,105 @@ Map filterJsonData = {
       "field": "delivery",
       "selection": "single",
       "nested": false,
+      "selectedCount": 0,
       "list": [
         {"name": "1 Week", "value": 1, "count": 20741, "selected": false},
-        {"name": "3 Weeks", "value": 3, "count": 6, "selected": false}
+        {"name": "3 Weeks", "value": 3, "count": 6, "selected": false},
+        {"name": "4 Weeks", "value": 4, "count": 622, "selected": false}
       ]
     },
     {
       "name": "Occasion",
       "field": "occasion_id",
       "selection": "multiple",
+      "selectedCount": 0,
       "nested": false,
       "list": [
+        {"name": "Bride", "value": 1, "count": 68, "selected": false},
         {
-          "name": "Women",
-          "value": 1,
-          "list": [
-            {"name": "Bride", "value": 1, "count": 68, "selected": false},
-            {
-              "name": "Mehendi & Haldi",
-              "value": 2,
-              "count": 464,
-              "selected": false
-            },
-            {"name": "Sangeet", "value": 3, "count": 511, "selected": false},
-            {"name": "Cocktail", "value": 4, "count": 171, "selected": false},
-            {"name": "Wedding", "value": 5, "count": 538, "selected": false},
-            {"name": "Reception", "value": 6, "count": 200, "selected": false},
-            {
-              "name": "Destination Wedding",
-              "value": 7,
-              "count": 551,
-              "selected": false
-            },
-            {"name": "Resort", "value": 8, "count": 710, "selected": false},
-            {"name": "Work", "value": 9, "count": 941, "selected": false},
-            {"name": "Party", "value": 10, "count": 995, "selected": false},
-            {"name": "Puja", "value": 11, "count": 1135, "selected": false}
-          ],
-          "is_expanded": false
-        },
-        {
-          "name": "Men",
+          "name": "Mehendi & Haldi",
           "value": 2,
-          "list": [
-            {"name": "Groom", "value": 12, "count": 32, "selected": false},
-            {
-              "name": "Mehendi & Puja",
-              "value": 13,
-              "count": 243,
-              "selected": false
-            },
-            {"name": "Sangeet", "value": 14, "count": 551, "selected": false},
-            {
-              "name": "Cocktail & Reception",
-              "value": 15,
-              "count": 60,
-              "selected": false
-            },
-            {"name": "Wedding", "value": 16, "count": 515, "selected": false},
-            {
-              "name": "Destination Wedding",
-              "value": 17,
-              "count": 90,
-              "selected": false
-            },
-            {"name": "Resort", "value": 18, "count": 63, "selected": false},
-            {"name": "Party", "value": 19, "count": 208, "selected": false}
-          ],
-          "is_expanded": false
+          "count": 464,
+          "selected": false
+        },
+        {"name": "Sangeet", "value": 3, "count": 511, "selected": false},
+        {"name": "Cocktail", "value": 4, "count": 171, "selected": false},
+        {"name": "Wedding", "value": 5, "count": 538, "selected": false},
+        {"name": "Reception", "value": 6, "count": 200, "selected": false},
+        {
+          "name": "Destination Wedding",
+          "value": 7,
+          "count": 551,
+          "selected": false
+        },
+        {"name": "Resort", "value": 8, "count": 710, "selected": false},
+        {"name": "Work", "value": 9, "count": 941, "selected": false},
+        {"name": "Party", "value": 10, "count": 995, "selected": false},
+        {"name": "Puja", "value": 11, "count": 1135, "selected": false},
+        {"name": "Groom", "value": 12, "count": 32, "selected": false},
+        {
+          "name": "Mehendi & Puja",
+          "value": 13,
+          "count": 243,
+          "selected": false
+        },
+        {"name": "Sangeet", "value": 14, "count": 551, "selected": false},
+        {
+          "name": "Cocktail & Reception",
+          "value": 15,
+          "count": 60,
+          "selected": false
+        },
+        {"name": "Wedding", "value": 16, "count": 515, "selected": false},
+        {
+          "name": "Destination Wedding",
+          "value": 17,
+          "count": 90,
+          "selected": false
+        },
+        {"name": "Resort", "value": 18, "count": 63, "selected": false},
+        {"name": "Party", "value": 19, "count": 208, "selected": false},
+        {
+          "name": "Cocktail & Reception",
+          "value": 30,
+          "count": 6,
+          "selected": false
         },
         {
-          "name": "Accessories",
-          "value": 4,
-          "list": [
-            {
-              "name": "Cocktail & Reception",
-              "value": 30,
-              "count": 6,
-              "selected": false
-            },
-            {
-              "name": "Destination Wedding",
-              "value": 31,
-              "count": 1,
-              "selected": false
-            },
-            {
-              "name": "Mehendi & Puja",
-              "value": 33,
-              "count": 1,
-              "selected": false
-            },
-            {"name": "Party", "value": 34, "count": 15, "selected": false},
-            {"name": "Puja", "value": 35, "count": 1, "selected": false},
-            {"name": "Resort", "value": 37, "count": 26, "selected": false},
-            {"name": "Wedding", "value": 39, "count": 2, "selected": false},
-            {"name": "Work", "value": 40, "count": 1, "selected": false}
-          ],
-          "is_expanded": false
+          "name": "Destination Wedding",
+          "value": 31,
+          "count": 1,
+          "selected": false
+        },
+        {"name": "Mehendi & Puja", "value": 33, "count": 1, "selected": false},
+        {"name": "Party", "value": 34, "count": 15, "selected": false},
+        {"name": "Puja", "value": 35, "count": 1, "selected": false},
+        {"name": "Resort", "value": 37, "count": 26, "selected": false},
+        {"name": "Wedding", "value": 39, "count": 2, "selected": false},
+        {"name": "Work", "value": 40, "count": 1, "selected": false},
+        {
+          "name": "Festive & Wedding",
+          "value": 20,
+          "count": 275,
+          "selected": false
+        },
+        {"name": "Party", "value": 21, "count": 138, "selected": false},
+        {"name": "Bride", "value": 22, "count": 36, "selected": false},
+        {
+          "name": "Mehendi & Puja",
+          "value": 23,
+          "count": 143,
+          "selected": false
         },
         {
-          "name": "Kids",
-          "value": 5,
-          "list": [
-            {
-              "name": "Festive & Wedding",
-              "value": 20,
-              "count": 275,
-              "selected": false
-            },
-            {"name": "Party", "value": 21, "count": 138, "selected": false}
-          ],
-          "is_expanded": false
+          "name": "Cocktail & Reception",
+          "value": 24,
+          "count": 136,
+          "selected": false
         },
-        {
-          "name": "Jewellery",
-          "value": 3,
-          "list": [
-            {"name": "Bride", "value": 22, "count": 36, "selected": false},
-            {
-              "name": "Mehendi & Puja",
-              "value": 23,
-              "count": 143,
-              "selected": false
-            },
-            {
-              "name": "Cocktail & Reception",
-              "value": 24,
-              "count": 136,
-              "selected": false
-            },
-            {"name": "Wedding", "value": 25, "count": 202, "selected": false},
-            {"name": "Work", "value": 26, "count": 126, "selected": false},
-            {"name": "Party", "value": 27, "count": 208, "selected": false}
-          ],
-          "is_expanded": false
-        }
+        {"name": "Wedding", "value": 25, "count": 202, "selected": false},
+        {"name": "Work", "value": 26, "count": 126, "selected": false},
+        {"name": "Party", "value": 27, "count": 208, "selected": false}
       ]
     }
   ],
@@ -4400,6 +4472,7 @@ class FilterModel {
   String? min;
   String? max;
   String? colorCode;
+  int? selectedCount;
 
   FilterModel(
       {this.field,
@@ -4428,6 +4501,7 @@ class FilterModel {
     max = json['max'] as String?;
     colorCode = json['colorCode'] as String?;
     selected = json['selected'] ?? false;
+    selectedCount = json['selectedCount'] ?? 0;
   }
 
   Map<String, dynamic> toJson() => {
@@ -4441,6 +4515,7 @@ class FilterModel {
         'min': min,
         'max': max,
         'colorCode': colorCode,
-        'selected': selected
+        'selected': selected,
+        'selectedCount': selectedCount
       };
 }
