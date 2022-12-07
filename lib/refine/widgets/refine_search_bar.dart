@@ -1,5 +1,4 @@
 import 'package:azafilters/constant.dart';
-import 'package:azafilters/helperWidgets/nothing.dart';
 import 'package:azafilters/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,7 +26,7 @@ TextFormField refineSearchBar({required String hint, bool sufixIcon = true}) {
                 child: SvgPicture.asset("assets/Search.svg"),
               ),
             )
-          : Nothing(),
+          : const SizedBox.shrink(),
     ),
   );
 }

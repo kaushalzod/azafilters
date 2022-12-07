@@ -208,6 +208,22 @@ Map filterJsonData = {
           "selectedCount": 0,
           "list": [
             {
+              "name": "All Women",
+              "value": -1,
+              "count": 2552,
+              "selected": false,
+              "field": "sub_category_id",
+              "selectedCount": 0,
+              "list": [
+                {
+                  "name": "All Women",
+                  "value": -1,
+                  "count": 90,
+                  "selected": false
+                }
+              ]
+            },
+            {
               "name": "Kurta Sets",
               "value": 49,
               "count": 2552,
@@ -215,6 +231,12 @@ Map filterJsonData = {
               "field": "sub_category_id",
               "selectedCount": 0,
               "list": [
+                {
+                  "name": "All Kurta Sets",
+                  "value": -2,
+                  "count": 90,
+                  "selected": false
+                },
                 {
                   "name": "Palazzo Sets",
                   "value": 102,
@@ -279,6 +301,12 @@ Map filterJsonData = {
               "selectedCount": 0,
               "field": "sub_category_id",
               "list": [
+                {
+                  "name": "All Lehengas",
+                  "value": -2,
+                  "count": 90,
+                  "selected": false
+                },
                 {
                   "name": "Classic Lehengas",
                   "value": 103,
@@ -4459,6 +4487,34 @@ Map filterJsonData = {
     }
   ],
 };
+
+loopFunction() {
+  final stopwatch = Stopwatch()..start();
+  int mainCatCount = 0;
+  int subCatCount = 0;
+  int subSubCount = 0;
+
+  int allCount = 0;
+  for (int i = 0; i < (filterJsonData["filters"]?.length ?? 0); i++) {
+    mainCatCount++;
+    // print("-----${filterJsonData["filters"][i]['name']}\n");
+    for (int j = 0;
+        j < (filterJsonData["filters"][i]["list"]?.length ?? 0);
+        j++) {
+      subCatCount++;
+      // print("\t|-----${filterJsonData["filters"][i]["list"][j]['name']}\n");
+      for (var k = 0;
+          k < (filterJsonData["filters"][i]["list"][j]["list"]?.length ?? 0);
+          k++) {
+        subSubCount++;
+        // print(
+        //     "\t\t|-----${filterJsonData["filters"][i]["list"][j]["list"][k]['name']}\n");
+      }
+    }
+  }
+  print("$mainCatCount + $subCatCount + $subSubCount");
+  print('doSomething() executed in ${stopwatch.elapsed.inMicroseconds}');
+}
 
 class FilterModel {
   String? name;
