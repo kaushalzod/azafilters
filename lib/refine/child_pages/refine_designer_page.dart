@@ -15,23 +15,28 @@ class RefineDesignerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarWidget(title: title),
-      body: Column(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: greyScale90),
+      appBar: refineAppbarWidget(title: title),
+      body: Consumer<RefineProvider>(builder: (context, value, child) {
+        return Column(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: greyScale90),
+                ),
               ),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16)
-                .add(const EdgeInsets.only(top: 8, bottom: 16)),
-            child: Column(
-              children: [
-                refineSearchBar(hint: "Search $title"),
-                Consumer<RefineProvider>(builder: (context, value, child) {
-                  if (value.selectedDesignerFilters.isNotEmpty) {
-                    return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16)
+                  .add(const EdgeInsets.only(top: 8, bottom: 16)),
+              child: Column(
+                children: [
+                  refineSearchBar(
+                    hint: "Search $title",
+                    controller: value.designerSearchTextController,
+                    onChanged: (values) => value.updateSearchQuery(),
+                    onClearSearch: () => value.clearDesignerController(),
+                  ),
+                  if (value.selectedDesignerFilters.isNotEmpty)
+                    Container(
                       margin: const EdgeInsets.only(top: 16),
                       height: 30,
                       child: ListView.builder(
@@ -46,6 +51,10 @@ class RefineDesignerPage extends StatelessWidget {
                                       '',
                               onTap: () {
                                 value.designerFindAndRemove(
+                                  designerName: value
+                                          .selectedDesignerFilters[index]
+                                          .name ??
+                                      '',
                                   index: index,
                                   mainCatId: value
                                           .selectedDesignerFilters[index]
@@ -55,47 +64,51 @@ class RefineDesignerPage extends StatelessWidget {
                               }),
                         ),
                       ),
-                    );
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                })
-              ],
+                    )
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Ink(
-              padding: const EdgeInsets.only(top: 12),
-              color: greyScale98,
-              child: Consumer<RefineProvider>(builder: (context, value, child) {
-                return ListView.builder(
+            Expanded(
+              child: Ink(
+                padding: const EdgeInsets.only(top: 12),
+                color: greyScale98,
+                child: ListView.builder(
                   itemCount: value.getDesignerItemCount(),
                   itemBuilder: (context, index) {
                     if (value.getAlphabetNameLogic(index: index)) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            child: Text(
-                              value.getDesignerName(index: index)[0] ?? '',
-                              style: text500.copyWith(
-                                  fontSize: 16, color: greyScale60),
-                            ),
-                          ),
-                          _designerNameBox(index: index, value: value)
-                        ],
-                      );
+                      return value.searchForDesigner(index: index)
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                value.designerSearchTextController.text.isEmpty
+                                    ? Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
+                                        child: Text(
+                                          value.getDesignerName(
+                                                  index: index)[0] ??
+                                              '',
+                                          style: text500.copyWith(
+                                              fontSize: 16, color: greyScale60),
+                                        ),
+                                      )
+                                    : const SizedBox.shrink(),
+                                _designerNameBox(index: index, value: value)
+                              ],
+                            )
+                          : const SizedBox.shrink();
                     } else {
-                      return _designerNameBox(index: index, value: value);
+                      return value.searchForDesigner(index: index)
+                          ? _designerNameBox(index: index, value: value)
+                          : const SizedBox.shrink();
                     }
                   },
-                );
-              }),
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        );
+      }),
     );
   }
 }

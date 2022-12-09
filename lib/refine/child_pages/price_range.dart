@@ -12,10 +12,11 @@ class RefinePriceRange extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CircleThumbShape circleThumbShape = CircleThumbShape(thumbRadius: 9.0);
+    CircleThumbShape circleThumbShape =
+        const CircleThumbShape(thumbRadius: 9.0);
     return Scaffold(
       backgroundColor: greyScale100,
-      appBar: appbarWidget(title: title, icon: false),
+      appBar: refineAppbarWidget(title: title, icon: false),
       body: Consumer<RefineProvider>(
         builder: (context, value, child) {
           return Column(
@@ -31,7 +32,7 @@ class RefinePriceRange extends StatelessWidget {
                     Container(
                       alignment: Alignment.center,
                       width: 30,
-                      child: Text("-"),
+                      child: const Text("-"),
                     ),
                     Expanded(
                         child: refineSearchBar(
@@ -42,13 +43,13 @@ class RefinePriceRange extends StatelessWidget {
               ),
               SliderTheme(
                 data: SliderTheme.of(context).copyWith(
-                    activeTrackColor: Color(0xFFF58E70),
+                    activeTrackColor: const Color(0xFFF58E70),
                     inactiveTrackColor: greyScale90,
-                    trackShape: RectangularSliderTrackShape(),
+                    trackShape: const RectangularSliderTrackShape(),
                     trackHeight: 4,
                     thumbColor: azaMain,
                     activeTickMarkColor: azaMain,
-                    tickMarkShape: RoundSliderTickMarkShape(),
+                    tickMarkShape: const RoundSliderTickMarkShape(),
                     rangeThumbShape: circleThumbShape),
                 child: RangeSlider(
                   inactiveColor: greyScale90,
@@ -106,12 +107,13 @@ class CircleThumbShape extends RangeSliderThumbShape {
       ..style = PaintingStyle.stroke;
 
     path.addOval(Rect.fromCircle(center: center, radius: thumbRadius));
-    canvas.drawShadow(path, Color(0xff000000), 3, true);
+    canvas.drawShadow(path, const Color(0xff000000), 3, true);
     canvas.drawPath(path, shadowPaint);
     canvas.drawCircle(center, thumbRadius, fillPaint);
     canvas.drawCircle(center, thumbRadius, borderPaint);
-    canvas.drawShadow(Path().shift(Offset(0, 4)), Colors.black, 1.0, false);
     canvas.drawShadow(
-        Path().shift(Offset(0, 4)), Colors.grey.withAlpha(50), 14.0, false);
+        Path().shift(const Offset(0, 4)), Colors.black, 1.0, false);
+    canvas.drawShadow(Path().shift(const Offset(0, 4)),
+        Colors.grey.withAlpha(50), 14.0, false);
   }
 }

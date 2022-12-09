@@ -6,6 +6,7 @@ import 'package:azafilters/refine/widgets/refine_checkbox_widget.dart';
 import 'package:azafilters/refine/widgets/refine_search_bar.dart';
 import 'package:azafilters/refine/widgets/refine_subcat_tile.dart';
 import 'package:azafilters/refine/widgets/refine_tabtile_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,63 +17,66 @@ class RefineCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarWidget(title: title),
-      body: Column(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: greyScale90),
-              ),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16)
-                .add(const EdgeInsets.only(top: 8, bottom: 16)),
-            child: Column(
-              children: [
-                refineSearchBar(hint: "Search $title"),
-                Consumer<RefineProvider>(builder: (context, value, child) {
-                  if (value.selectedCatFilters.isNotEmpty) {
-                    return Container(
-                      margin: const EdgeInsets.only(top: 16),
-                      height: 30,
-                      child: ListView.builder(
-                        physics: const ClampingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: value.selectedCatFilters.length,
-                        itemBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: RefineBadgeWidget(
-                              title: value.selectedCatFilters[index].list?[0]
-                                      .list?[0].name ??
-                                  '',
-                              onTap: () {
-                                value.catFindAndRemove(
-                                    index: index,
-                                    mainCatId:
-                                        value.selectedCatFilters[index].value ??
-                                            0,
-                                    subCatId: value.selectedCatFilters[index]
-                                            .list?[0].value ??
-                                        0,
-                                    subSubCatId: value.selectedCatFilters[index]
-                                            .list?[0].list?[0].value ??
-                                        0);
-                              }),
+      appBar: refineAppbarWidget(title: title),
+      body: Consumer<RefineProvider>(
+        builder: (context, value, child) => Column(
+          children: [
+            Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(color: greyScale90),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 16)
+                    .add(const EdgeInsets.only(top: 8, bottom: 16)),
+                child: Column(
+                  children: [
+                    refineSearchBar(
+                      hint: "Search $title",
+                      controller: value.catSearchTextController,
+                      onChanged: (values) => value.updateSearchQuery(),
+                      onClearSearch: () => value.clearCatController(),
+                    ),
+//! Selection badges or chip
+                    if (value.selectedCatFilters.isNotEmpty)
+                      Container(
+                        margin: const EdgeInsets.only(top: 16),
+                        height: 30,
+                        child: ListView.builder(
+                          physics: const ClampingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: value.selectedCatFilters.length,
+                          itemBuilder: (context, index) => Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: RefineBadgeWidget(
+                                title: value.selectedCatFilters[index].list?[0]
+                                        .list?[0].name ??
+                                    '',
+                                onTap: () {
+                                  value.catFindAndRemove(
+                                      index: index,
+                                      mainCatId: value.selectedCatFilters[index]
+                                              .value ??
+                                          0,
+                                      subCatId: value.selectedCatFilters[index]
+                                              .list?[0].value ??
+                                          0,
+                                      subSubCatId: value
+                                              .selectedCatFilters[index]
+                                              .list?[0]
+                                              .list?[0]
+                                              .value ??
+                                          0);
+                                }),
+                          ),
                         ),
-                      ),
-                    );
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                })
-              ],
-            ),
-          ),
+                      )
+                  ],
+                )),
 
 //!Main Category Tabs of Root Category Tab
 
-          Consumer<RefineProvider>(
-            builder: (context, value, child) => SizedBox(
+            SizedBox(
               height: 40,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -88,29 +92,34 @@ class RefineCategoryPage extends StatelessWidget {
                 ),
               ),
             ),
-          ),
 
-          Consumer<RefineProvider>(
-            builder: (context, value, child) => Expanded(
+            Expanded(
               child: Row(
                 children: [
 //! SubCategory Tabs
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * .42,
+                    width: MediaQuery.of(context).size.width * .417,
                     child: ListView.builder(
                       physics: const ClampingScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return RefineSubCatTileWidget(
-                            selectionCount:
-                                value.getSubCatSelectedCount(index: index),
-                            onTap: (v) {
-                              value.setSubCatSelected = index;
-                            },
-                            title: value.getSubCatName(index: index),
-                            isActive: value.subCatSelected == index);
+                        return value.searchForSubCat(index: index)
+                            ? RefineSubCatTileWidget(
+                                selectionCount:
+                                    value.getSubCatSelectedCount(index: index),
+                                onTap: (v) {
+                                  value.setSubCatSelected = index;
+                                },
+                                title: value.getSubCatName(index: index),
+                                isActive: value.subCatSelected == index)
+                            : const SizedBox.shrink();
                       },
                       itemCount: value.getSubCatItemCount(),
                     ),
+                  ),
+                  const VerticalDivider(
+                    width: 1,
+                    color: greyScale90,
+                    thickness: 1,
                   ),
 //! SubSubCategory Checkboxes
                   Ink(
@@ -119,12 +128,15 @@ class RefineCategoryPage extends StatelessWidget {
                     child: ListView.builder(
                       physics: const ClampingScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return RefineCheckboxWidget(
-                            onChanged: (values) {
-                              value.setSubSubCatSelection(index: index);
-                            },
-                            value: value.getSubSubCatSelection(index: index),
-                            label: value.getSubSubCatName(index: index));
+                        return value.searchForSubSubCat(index: index)
+                            ? RefineCheckboxWidget(
+                                onChanged: (values) {
+                                  value.setSubSubCatSelection(index: index);
+                                },
+                                value:
+                                    value.getSubSubCatSelection(index: index),
+                                label: value.getSubSubCatName(index: index))
+                            : const SizedBox.shrink();
                       },
                       itemCount: value.getSubSubCatItemCount(),
                     ),
@@ -132,8 +144,8 @@ class RefineCategoryPage extends StatelessWidget {
                 ],
               ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

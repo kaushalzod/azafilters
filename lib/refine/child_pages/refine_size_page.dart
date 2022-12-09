@@ -15,23 +15,28 @@ class RefineSizePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarWidget(title: title),
-      body: Column(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: greyScale90),
+      appBar: refineAppbarWidget(title: title),
+      body: Consumer<RefineProvider>(builder: (context, value, child) {
+        return Column(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: greyScale90),
+                ),
               ),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16)
-                .add(const EdgeInsets.only(top: 8, bottom: 16)),
-            child: Column(
-              children: [
-                refineSearchBar(hint: "Search $title"),
-                Consumer<RefineProvider>(builder: (context, value, child) {
-                  if (value.selectedSizeFilters.isNotEmpty) {
-                    return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16)
+                  .add(const EdgeInsets.only(top: 8, bottom: 16)),
+              child: Column(
+                children: [
+                  refineSearchBar(
+                    hint: "Search $title",
+                    controller: value.sizeSearchTextController,
+                    onChanged: (values) => value.updateSearchQuery(),
+                    onClearSearch: () => value.clearSizeController(),
+                  ),
+                  if (value.selectedSizeFilters.isNotEmpty)
+                    Container(
                       margin: const EdgeInsets.only(top: 16),
                       height: 30,
                       child: ListView.builder(
@@ -47,6 +52,9 @@ class RefineSizePage extends StatelessWidget {
                               onTap: () {
                                 value.sizeFindAndRemove(
                                   index: index,
+                                  sizeName: value.selectedSizeFilters[index]
+                                          .list?[0].name ??
+                                      '',
                                   mainCatId:
                                       value.selectedSizeFilters[index].value ??
                                           0,
@@ -57,35 +65,37 @@ class RefineSizePage extends StatelessWidget {
                               }),
                         ),
                       ),
-                    );
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                })
-              ],
+                    )
+                ],
+              ),
             ),
-          ),
-          Consumer<RefineProvider>(
-            builder: (context, value, child) => Expanded(
+            Expanded(
               child: Row(
                 children: [
 //! SubCategory Tabs
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * .42,
+                    width: MediaQuery.of(context).size.width * .417,
                     child: ListView.builder(
                       physics: const ClampingScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return RefineSubCatTileWidget(
-                            selectionCount:
-                                value.getSizeRootSelectedCount(index: index),
-                            onTap: (v) {
-                              value.setMainCatSelected = index;
-                            },
-                            title: value.getSizeRootName(index: index),
-                            isActive: value.mainCatSelected == index);
+                        return value.searchForRootSize(index: index)
+                            ? RefineSubCatTileWidget(
+                                selectionCount: value.getSizeRootSelectedCount(
+                                    index: index),
+                                onTap: (v) {
+                                  value.setMainCatSelected = index;
+                                },
+                                title: value.getSizeRootName(index: index),
+                                isActive: value.mainCatSelected == index)
+                            : const SizedBox.shrink();
                       },
                       itemCount: value.getSizeRootItemCount(),
                     ),
+                  ),
+                  const VerticalDivider(
+                    width: 1,
+                    color: greyScale90,
+                    thickness: 1,
                   ),
 //! SubSubCategory Checkboxes
                   Ink(
@@ -106,10 +116,10 @@ class RefineSizePage extends StatelessWidget {
                   )
                 ],
               ),
-            ),
-          )
-        ],
-      ),
+            )
+          ],
+        );
+      }),
     );
   }
 }

@@ -14,74 +14,76 @@ class RefineOccasionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarWidget(title: title),
-      body: Column(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: greyScale90),
+      appBar: refineAppbarWidget(title: title),
+      body: Consumer<RefineProvider>(builder: (context, value, child) {
+        return Column(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: greyScale90),
+                ),
               ),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16)
-                .add(const EdgeInsets.only(top: 8, bottom: 16)),
-            child: Column(
-              children: [
-                refineSearchBar(hint: "Search $title"),
-                Consumer<RefineProvider>(
-                  builder: (context, value, child) {
-                    if (value.selectedOccasionFilters.isNotEmpty) {
-                      return Container(
-                        margin: const EdgeInsets.only(top: 16),
-                        height: 30,
-                        child: ListView.builder(
-                          physics: const ClampingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: value.selectedOccasionFilters.length,
-                          itemBuilder: (context, index) => Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                            child: RefineBadgeWidget(
-                                title:
-                                    value.selectedOccasionFilters[index].name ??
-                                        '',
-                                onTap: () {
-                                  value.occasionFindAndRemove(
-                                    index: index,
-                                    mainCatId: value
-                                            .selectedOccasionFilters[index]
-                                            .value ??
-                                        0,
-                                  );
-                                }),
-                          ),
+              padding: const EdgeInsets.symmetric(horizontal: 16)
+                  .add(const EdgeInsets.only(top: 8, bottom: 16)),
+              child: Column(
+                children: [
+                  refineSearchBar(
+                    hint: "Search $title",
+                    controller: value.occasionSearchTextController,
+                    onChanged: (values) => value.updateSearchQuery(),
+                    onClearSearch: () => value.clearOccasionController(),
+                  ),
+                  if (value.selectedOccasionFilters.isNotEmpty)
+                    Container(
+                      margin: const EdgeInsets.only(top: 16),
+                      height: 30,
+                      child: ListView.builder(
+                        physics: const ClampingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: value.selectedOccasionFilters.length,
+                        itemBuilder: (context, index) => Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: RefineBadgeWidget(
+                              title:
+                                  value.selectedOccasionFilters[index].name ??
+                                      '',
+                              onTap: () {
+                                value.occasionFindAndRemove(
+                                  index: index,
+                                  occassionName: value
+                                          .selectedOccasionFilters[index]
+                                          .name ??
+                                      '',
+                                  mainCatId: value
+                                          .selectedOccasionFilters[index]
+                                          .value ??
+                                      0,
+                                );
+                              }),
                         ),
-                      );
-                    } else {
-                      return const SizedBox.shrink();
-                    }
-                  },
-                )
-              ],
-            ),
-          ),
-          Expanded(
-            child: Ink(
-              padding: const EdgeInsets.only(top: 12),
-              color: greyScale98,
-              child: Consumer<RefineProvider>(
-                builder: (context, value, child) {
-                  return ListView.builder(
-                    itemCount: value.getOccasionItemCount(),
-                    itemBuilder: (context, index) {
-                      return _occasionNameBox(index: index, value: value);
-                    },
-                  );
-                },
+                      ),
+                    )
+                ],
               ),
             ),
-          ),
-        ],
-      ),
+            Expanded(
+              child: Ink(
+                padding: const EdgeInsets.only(top: 12),
+                color: greyScale98,
+                child: ListView.builder(
+                  itemCount: value.getOccasionItemCount(),
+                  itemBuilder: (context, index) {
+                    return value.searchForOccasion(index: index)
+                        ? _occasionNameBox(index: index, value: value)
+                        : const SizedBox.shrink();
+                  },
+                ),
+              ),
+            ),
+          ],
+        );
+      }),
     );
   }
 }
